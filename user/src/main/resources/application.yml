@@ -2,16 +2,23 @@ spring:
   application:
     name: user-service
 
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:test
+  data:
+    mongodb:
+#      uri: mongodb+srv://bhattacharjeeabhinav_db_user:NRCldOxdxeXpZQ3n@user-data.ovjmefc.mongodb.net/?appName=user-data
+      uri: mongodb://localhost:27017/ecom_user
+      database: ecom_user
 
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/userdb
+#    username: abhinav
+#    password: abhinav
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#
 
 
 server:

@@ -30,8 +30,8 @@ public class UserService {
         return userRepository.findAll().stream().map(this::mapToUserResponse).toList(); //userList;
     }
 
-    public Optional<UserResponse> fetchUser(Long id){
-        return userRepository.findById(id).map(this::mapToUserResponse);
+    public Optional<UserResponse> fetchUser(String id){
+        return userRepository.findById(String.valueOf(id)).map(this::mapToUserResponse);
         //userList.stream().filter(user -> user.getId().equals(id)).findFirst();
     }
 
@@ -65,7 +65,7 @@ public class UserService {
 
 
 
-    public boolean updateUser(Long id, UserRequest updatedUserRequest){
+    public boolean updateUser(String id, UserRequest updatedUserRequest){
 //        return userList.stream().filter(user -> user.getId().equals(id))
 //                .findFirst().map(existingUser-> {
 //                    existingUser.setFirstName(updatedUser.getFirstName());
@@ -73,7 +73,7 @@ public class UserService {
 //                    return true;
 //                }).orElse(false);
 
-        return userRepository.findById(id).map(existingUser-> {
+        return userRepository.findById(String.valueOf(id)).map(existingUser-> {
 //                    existingUser.setFirstName(updatedUser.getFirstName());
 //                    existingUser.setLastName(updatedUser.getLastName());
                     updateUserFromRequest(existingUser, updatedUserRequest);
