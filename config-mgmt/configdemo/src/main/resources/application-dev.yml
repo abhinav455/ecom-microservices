@@ -1,0 +1,9 @@
+build:
+  id: 101   #can also do ${ID}, so that dont handcode and get from env(even though @Value gets from env itslef)
+            #good for setting client secrets etc.
+
+
+  version: 1.2.3
+  name: "Dev-Production-Build"
+  type: "Development Build"
+
