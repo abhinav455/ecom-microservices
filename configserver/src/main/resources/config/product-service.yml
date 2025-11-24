@@ -1,0 +1,65 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product
+#    url: jdbc:mysql://localhost:3306/productdb
+#    url: jdbc:postgresql://ep-wispy-heart-adyd86ek-pooler.c-2.us-east-1.aws.neon.tech/product?sslmode=require&channel_binding=require
+    username: ${DB_USER}   # neondb_owner
+    password: ${DB_PASSWORD}      #npg_k7XZvNOwB6gq
+
+
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    virtual-host: ${RABBITMQ_VHOST:guest}
+    connection-timeout: 30000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    prometheus:
+      enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
+app:
+  message: "Hello Product"
+
+
+server:
+  port: 8081
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+    register-with-eureka: true
+    fetch-registry: true
+
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  logback:
+    rollingpolicy:
+      max-file-size: 1MB
+      max-history: 7

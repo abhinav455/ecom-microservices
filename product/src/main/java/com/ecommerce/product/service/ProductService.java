@@ -88,4 +88,9 @@ public class ProductService {
 
         return productRepository.searchProducts(keyword).stream().map(this::mapToProductResponse).toList();
     }
+
+    public Optional<ProductResponse> getProductById(Long id) {
+        return productRepository.findByIdAndActiveTrue(id)
+                .map(this::mapToProductResponse);
+    }
 }

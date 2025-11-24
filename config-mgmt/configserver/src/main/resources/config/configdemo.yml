@@ -1,0 +1,28 @@
+#spring:
+#  application:
+#    name: configdemo
+
+#  config:
+#    import: optional:configserver:http://localhost:8898
+#
+#  profiles:
+#    active: dev #${spring.profiles.active}  #dev
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
+
+
+build:
+  id: 101
+  version: 1.2.3
+  name: "Native Default-Default-Build"
+  type: "Native Default Build"
+
+
+

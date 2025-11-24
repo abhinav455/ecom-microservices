@@ -2,25 +2,8 @@ spring:
   application:
     name: user-service
 
-  data:
-    mongodb:
-#      uri: mongodb+srv://bhattacharjeeabhinav_db_user:NRCldOxdxeXpZQ3n@user-data.ovjmefc.mongodb.net/?appName=user-data
-      uri: mongodb://localhost:27017/ecom_user
-      database: ecom_user
-
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/userdb
-#    username: abhinav
-#    password: abhinav
-#  jpa:
-#    database: POSTGRESQL
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-#
+  config:
+      import: optional:configserver:http://localhost:8898
 
 
-server:
-  port: 8082
 

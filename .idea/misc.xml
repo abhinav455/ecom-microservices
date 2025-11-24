@@ -9,6 +9,14 @@
         <option value="$PROJECT_DIR$/product/pom.xml" />
         <option value="$PROJECT_DIR$/configdemo/pom.xml" />
         <option value="$PROJECT_DIR$/configdemo/configserver/pom.xml" />
+        <option value="$PROJECT_DIR$/config-mgmt/configserver/pom.xml" />
+        <option value="$PROJECT_DIR$/config-mgmt/configdemo/pom.xml" />
+        <option value="$PROJECT_DIR$/configserver/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/notification/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka/producer/pom.xml" />
       </list>
     </option>
   </component>

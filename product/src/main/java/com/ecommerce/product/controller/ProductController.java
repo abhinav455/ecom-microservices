@@ -22,9 +22,27 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(productRequest));
     }
 
+
+	@GetMapping("/simulate")
+	public ResponseEntity<String> simulateFailure(@RequestParam(defaultValue = "false") boolean fail){
+
+		if(fail){
+			throw new RuntimeException("Simulated Failure for Testing");
+		}
+
+		return ResponseEntity.status(HttpStatus.OK).body("Product service is ok");
+	}
+
+
+
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getProducts(){
         return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProducts());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable Long id){
+        return productService.getProductById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
@@ -50,3 +68,6 @@ public class ProductController {
     }
 
 }
+
+
+
