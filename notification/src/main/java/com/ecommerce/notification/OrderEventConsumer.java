@@ -4,12 +4,13 @@ package com.ecommerce.notification;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+//import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.notification.payload.OrderCreatedEvent;
 import com.ecommerce.notification.payload.OrderStatus;
-import com.ecommerce.order.dto.OrderCreatedEvent;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service

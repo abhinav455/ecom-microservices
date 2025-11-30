@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: resource
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8443/realms/oauth2-demos #used by spring to autofetch keycloak endpoints like login url, token url
+              #as resource server needs to validate jwt token
+
+
+server:
+  port: 8082

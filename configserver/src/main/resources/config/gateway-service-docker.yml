@@ -1,0 +1,115 @@
+spring:
+
+  security:
+    oauth2:
+      #      client:
+      #        registration:
+      #          keycloak-client:
+      #            client-id: oauth2-client-credentials
+      #            client-secret: U10unbPRsJvaP9ROq4ttcRa8N7QaRBFX
+      #            authorization-grant-type: client_credentials
+      #            scope: openid
+      #        provider:
+      #          keycloak-client:
+      #            token-uri: http://localhost:8443/realms/oauth2-demos/protocol/openid-connect/token
+
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/ecom-app
+            #http://localhost:8443/realms/ecom-app #used by spring to autofetch keycloak endpoints like login url, token url
+            #cant use localhost inside docker, use service-name itslef
+            #in keycloak container, running at 8080 port
+          #as resource server needs to validate jwt token
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka
+
+    register-with-eureka: true
+    fetch-registry: true
+
+
+#  cloud:
+#    gateway:
+#      server:
+#        webflux:
+#          routes:
+#            - id: product-service
+#              #id is unique identifier given to route
+#              uri:  lb://PRODUCT-SERVICE  #http://localhost:8081
+#              predicates:
+#                #defines condition so that incoming request is a match
+#                - Path=/products/**
+#              filters:
+#                - "RewritePath=/products(?<segment>/?.*),/api/products${segment}"
+#            - id: user-service
+#              uri: lb://USER-SERVICE  #http://localhost:8082
+#              predicates:
+#                - Path=/users/**
+#              filters:
+#                - "RewritePath=/users(?<segment>/?.*),/api/users${segment}"
+#            - id: order-service
+#              uri: lb://ORDER-SERVICE  #http://localhost:8083
+#              predicates:
+#                - Path=/orders/**, /cart/**
+#              filters:
+#                - "RewritePath=/(?<segment>.*),/api/${segment}"
+#            - id: eureka-server
+#              uri: http://localhost:8761  #http://localhost:8083
+#              predicates:
+#                - Path=/eureka/main
+#              filters:
+#                - SetPath=/
+#            - id: eureka-server-static
+#              uri: http://localhost:8761  #http://localhost:8083
+#              predicates:
+#                - Path=/eureka/**
+##              filters:
+##                - SetPath=/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  #    prometheus:
+  #      enabled: true
+    endpoint:
+      health:
+        show-details: always
+    health:
+      circuitbreakers:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
+
+server:
+  port: 8080
+
+#logging:
+#  level:
+#    root: info
+#    org.springframework.cloud.gateway.route.RouteDefinitionLocator: INFO
+#    org.springframework.cloud.gateway: TRACE
+
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      ecomBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slidingWindowType: count_based

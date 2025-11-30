@@ -1999,6 +1999,15 @@ StreamBridge acts as event driven whenever api endpoint hit
 Supplier is not event driven, it is just cont. source of msgs, can configure that also in spring:stream:
 
 
+IMP- 
+in kafka we face conversion issue as kafka transfers data in bytes
+not in rabbitmq(json to java obj directly, spring by default uses jackson)
+ as rabbitmq transfers data in json
+
+
+
+
+
 
 
 

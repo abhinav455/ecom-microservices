@@ -8,6 +8,11 @@
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kafka/consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/kafka/producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak/auth-code-flow/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak/client-credentials/client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak/client-credentials/pure-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak/client-credentials/resource/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak/pkce-flow/pkce/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/notification/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/product/src/main/java" charset="UTF-8" />

@@ -9,14 +9,21 @@
         <option value="$PROJECT_DIR$/product/pom.xml" />
         <option value="$PROJECT_DIR$/configdemo/pom.xml" />
         <option value="$PROJECT_DIR$/configdemo/configserver/pom.xml" />
-        <option value="$PROJECT_DIR$/config-mgmt/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/config-mgmt/configdemo/pom.xml" />
-        <option value="$PROJECT_DIR$/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/eureka/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/notification/pom.xml" />
         <option value="$PROJECT_DIR$/kafka/consumer/pom.xml" />
         <option value="$PROJECT_DIR$/kafka/producer/pom.xml" />
+        <option value="$PROJECT_DIR$/auth-code-flow/pom.xml" />
+        <option value="$PROJECT_DIR$/resource/pom.xml" />
+        <option value="$PROJECT_DIR$/pure-client/pom.xml" />
+        <option value="$PROJECT_DIR$/client-credentials/pure-client/pom.xml" />
+        <option value="$PROJECT_DIR$/client-credentials/resource/pom.xml" />
+        <option value="$PROJECT_DIR$/client-credentials/client/pom.xml" />
+        <option value="$PROJECT_DIR$/pkce/pom.xml" />
+        <option value="$PROJECT_DIR$/pkce-flow/pkce/pom.xml" />
+        <option value="$PROJECT_DIR$/configserver/pom.xml" />
       </list>
     </option>
   </component>

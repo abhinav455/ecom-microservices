@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: notification
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+#  rabbitmq:
+#    host: chimpanzee-01.rmq.cloudamqp.com #${RABBITMQ_HOST:localhost}
+#    port: 5672 #${RABBITMQ_PORT:5672}
+#    username: dwtkuyzt #${RABBITMQ_USERNAME:guest}
+#    password: C4E11kphxClMwG5cMcywgEBNY9jOe4D0 #${RABBITMQ_PASSWORD:guest}
+#    virtual-host: dwtkuyzt #${RABBITMQ_VHOST:/}
+#    connection-timeout: 30000
+
+  cloud:
+    config:
+      enabled: false
+    function:
+      definition: orderCreated
+
+    stream:
+      function:
+        definition: orderCreated
+      bindings:
+        orderCreated-in-0:
+          destination: order.exchange
+          group: notification-group
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: kafka:9092
+
+server:
+  port: 8084
+
+#rabbitmq:
+#  exchange:
+#    name: order.exchange
+#  queue:
+#    name: order.queue
+#  routing:
+#    key: order.tracking

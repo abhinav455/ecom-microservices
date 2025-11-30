@@ -71,4 +71,11 @@ logging:
 
 
 
-
+keycloak:
+  admin:
+    username: user
+    password: user
+    server-url: http://localhost:8443/
+    realm: ecom-app
+    client-id: admin-cli
+    client-uid: 9a88bd48-29b0-4df8-bee0-bea1700bd47e

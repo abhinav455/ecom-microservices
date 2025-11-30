@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: client
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak-client:
+            client-id: oauth2-client-credentials
+            client-secret: U10unbPRsJvaP9ROq4ttcRa8N7QaRBFX
+            authorization-grant-type: client_credentials
+            scope: openid
+        provider:
+          keycloak-client:
+            token-uri: http://localhost:8443/realms/oauth2-demos/protocol/openid-connect/token
+
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8443/realms/oauth2-demos #used by spring to autofetch keycloak endpoints like login url, token url
+          #as resource server needs to validate jwt token
+
+
+service2:
+  url: http://localhost:8082
+
+
+server:
+  port: 8081
+

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: auth-code-flow
+  security:
+    oauth2:
+      client:
+        registration:
+          oauth2-authorization-code-flow:
+            client-id: oauth2-authorization-code-flow
+            client-secret: 3EihdFXYrEy2Grc2V8Znc7rMUsLUxvks
+            scope: openid,profile,roles,email
+            authorization-grant-type: authorization_code #what flow we are using
+            redirect-uri: http://localhost:8080/login/oauth2/code/oauth2-authorization-code-flow
+              #where keycloak should send users after login
+        provider:
+          oauth2-authorization-code-flow:
+            issuer-uri: http://localhost:8443/realms/oauth2-demos #used by spring to autofetch keycloak endpoints like login url, token url
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          oauth2: DEBUG
+

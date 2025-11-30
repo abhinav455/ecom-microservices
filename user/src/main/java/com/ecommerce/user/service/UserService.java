@@ -17,6 +17,7 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+	private final KeyCloakAdminService keyCloakAdminService;
     //private List<User> userList = new ArrayList<>();
     //private Long nextId = 1L;
 
@@ -37,9 +38,21 @@ public class UserService {
 
     public void addUser(UserRequest userRequest){
         //user.setId(nextId++);
+
+	    String token = keyCloakAdminService.getAdminAccessToken();
+		String keycloakUserId =
+				keyCloakAdminService.createUser(token, userRequest);
+
         User user = new User();
         updateUserFromRequest(user, userRequest);
+		user.setKeycloakId(keycloakUserId);
+
+
+		keyCloakAdminService.assignRealmRoleToUser(userRequest.getUsername(),
+				"USER", keycloakUserId);
         userRepository.save(user);//userList.add(user);
+
+
     }
 
     private void updateUserFromRequest(User user, UserRequest userRequest){
@@ -85,6 +98,7 @@ public class UserService {
     private UserResponse mapToUserResponse(User user){
         UserResponse response = new UserResponse();
         response.setId(String.valueOf(user.getId()));
+		response.setKeyCloakId(user.getKeycloakId());
         response.setFirstName(user.getFirstName());
         response.setLastName(user.getLastName());
         response.setEmail(user.getEmail());
