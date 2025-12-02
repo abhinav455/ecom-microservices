@@ -67,10 +67,12 @@ public class GatewayConfig {
 						.path("/eureka/main")
 						.filters(f-> f
 								.rewritePath("/eureka/main", "/"))
-						.uri("http://localhost:8761"))
+						.uri("http://eureka:8761")) //with docker
+						//.uri("http://localhost:8761"))
 				.route("eureka-server-static", r-> r
 						.path("/eureka/**")
-						.uri("http://localhost:8761"))
+						.uri("http://eureka:8761")) //with docker
+				//.uri("http://localhost:8761"))
 				.build();
 
 	}

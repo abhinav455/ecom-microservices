@@ -16,6 +16,8 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/ecom-app
+          #jwt-set-uri: http://keycloak:8080/realms/ecom-app/protocol/openid-connect
+                  #above is certificate url
             #http://localhost:8443/realms/ecom-app #used by spring to autofetch keycloak endpoints like login url, token url
             #cant use localhost inside docker, use service-name itslef
             #in keycloak container, running at 8080 port
@@ -86,6 +88,9 @@ management:
   tracing:
     sampling:
       probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_URL:http://zipkin:9411/api/v2/spans}
 
 
 
