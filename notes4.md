@@ -1070,13 +1070,27 @@ kubectl exec -it <pod-name> -- curl http://127.0.0.1:8081
 
 
 
+-----------------------------------------
+
+
 Thus deployed to kubernetes, could also deploy to cloud and just expose the api gateway to public using kubernetes loadbalanced port
 postgres use inside kubernetes like dockerimage, or use managed RDS postgres amazon, just insert the url 
-also instead of kubernetes, can deploy jar file to aws elastic beanstalk,
-but kubernetes best, endgoal i have done, can deploy to any cloud kubernetes and just expose gateway endpoint to outside world
+
+also instead of kubernetes, can deploy jar file to aws elastic beanstalk(like gcp app engine serverless, uses ec2/vm behind, we get public s3 url)
+https://servicenow.udemy.com/course/spring-boot-using-intellij-build-a-real-world-project/learn/lecture/44014004#overview
+
+But kubernetes best, endgoal i have done, can deploy to any cloud kubernetes and just expose gateway endpoint to outside world
 
 ci/cd will be there so that only that image that kubernetes deployment listens to, when we push to github kubernetes aws webhook lambda runs the 
 deployment again
+
+
+
+
+
+
+
+
 
 
 
