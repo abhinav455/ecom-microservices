@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review
+  labels:
+    app: review
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: review
+      labels:
+        app: review
+    spec:
+      containers:
+        - name: review
+          image: dcode007/reviewms:latest
+#          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: k8s
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/review
+            - name: SPRING_DATASOURCE_USERNAME
+              value: embarkx
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: embarkx
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
+            - name: SPRING_JPA_SHOW_SQL
+              value: "true"
+      restartPolicy: Always
+  selector:
+    matchLabels:
+       app: review
+
+
+
+
+
+
+
+
+

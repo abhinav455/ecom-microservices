@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-new-pod
+spec: #desired state of pod, and what apps/services it should run
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+  - name: redis
+    image: redis:6.2.5
+
+
